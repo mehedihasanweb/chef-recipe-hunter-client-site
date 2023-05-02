@@ -1,0 +1,11 @@
+.banner-section {
+    /* background-image: url('../assets/bannerImg.jpg') */
+    /* backgroundPosition: 'center center',
+    backgroundRepeat: 'no-repeat',
+    padding: '100px' */
+    background-image: url('../assets/bannerImg.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    padding: 100px;
+}
