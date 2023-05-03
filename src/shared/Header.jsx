@@ -27,7 +27,6 @@ const Header = () => {
                         
                         <NavLink to='/' style={{marginLeft: '10px', textDecoration: "none", fontSize: '20px'}} className={({ isActive }) => isActive ? "primary" : ''} >Home</NavLink>
                         <NavLink to='/blog' style={{marginLeft: '10px', textDecoration: "none", fontSize: '20px'}} className={({ isActive }) => isActive ? "primary" : ''} >Blog</NavLink>
-                        <NavLink to='/footer' style={{marginLeft: '10px', textDecoration: "none", fontSize: '20px'}} className={({ isActive }) => isActive ? "primary" : ''} >Contact</NavLink>
                     </Nav>
                     <Nav>
                         {user ? <div>

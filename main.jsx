@@ -18,6 +18,7 @@ import ChefIDetail from './src/components/ChefIDetail.jsx';
 import AuthProvider from './src/provider/AuthProvider.jsx';
 import PrivateRoute from './src/routes/PrivateRoute.jsx';
 import Blog from './src/components/Blog.jsx';
+import Error from './src/components/Error.jsx';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,7 @@ const router = createBrowserRouter([
   {
     path: 'recipe',
     element: <RecipePage />,
+    errorElement: <Error />,
     children: [
       {
         path: ':id',
