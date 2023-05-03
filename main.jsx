@@ -1,21 +1,23 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './index.css'
+// import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import Home from './pages/Home.jsx';
-import Login from './pages/Login.jsx';
-import Register from './pages/Register.jsx';
-import Main from './pages/Main';
-import Footer from './shared/Footer';
-import Chef from './pages/Chef';
-import RecipePage from './components/RecipePage';
-import Banner from './components/Banner';
-import ChefIDetail from './components/ChefIDetail';
-import AuthProvider from './provider/AuthProvider';
+import Home from './src/pages/Home.jsx';
+import Login from './src/pages/Login.jsx';
+import Register from './src/pages/Register.jsx';
+import Main from './src/pages/Main.jsx';
+import Footer from './src/shared/Footer.jsx';
+import Chef from './src/pages/Chef.jsx';
+import RecipePage from './src/components/RecipePage.jsx';
+import Banner from './src/components/Banner.jsx';
+import ChefIDetail from './src/components/ChefIDetail.jsx';
+import AuthProvider from './src/provider/AuthProvider.jsx';
+import PrivateRoute from './src/routes/PrivateRoute.jsx';
+import Blog from './src/components/Blog.jsx';
 
 const router = createBrowserRouter([
   {
@@ -42,6 +44,10 @@ const router = createBrowserRouter([
         path: 'register',
         element: <Register />
       },
+      {
+        path: 'blog',
+        element: <Blog />
+      }
     ]
   },
   {
@@ -50,7 +56,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: ':id',
-        element: <ChefIDetail />,
+        element: <PrivateRoute><ChefIDetail /></PrivateRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/chef/${params.id}`)
       }
     ]

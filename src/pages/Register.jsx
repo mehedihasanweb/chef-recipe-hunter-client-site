@@ -9,14 +9,16 @@ const Register = () => {
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
 
-    // setError('')
-    // setSuccess('')
+
     const { createUser } = useContext(AuthContext)
     // console.log(createUser);
 
     const handleRegister = (event) => {
         event.preventDefault()
 
+
+        setError('')
+        setSuccess('')
         const form = event.target
         const name = form.name.value
         // const photo = form.photo.value 
@@ -25,7 +27,7 @@ const Register = () => {
 
         // console.log(name, email, password);
         // validation 
-        if(!/^.{6,}$/.test(password)){
+        if (!/^.{6,}$/.test(password)) {
             setError("Please add at least 6 characters")
             return
         }
@@ -33,11 +35,11 @@ const Register = () => {
             .then(result => {
                 const createUser = result.user
                 console.log(createUser);
+                setSuccess("Login Successfully")
                 form.reset()
-                setSuccess(success)
             })
             .catch(error => {
-                console.log(error);
+                setError(error.message);
             })
     }
     return (
@@ -53,12 +55,12 @@ const Register = () => {
                 </Form.Group> */}
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" name='email' placeholder="Enter email" />
+                    <Form.Control type="email" name='email' placeholder="Enter email" required/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <div style={{position: 'relative'}}>
-                        <Form.Control type={showPass ? "text" : "password"} name='password' placeholder="Password" />
+                    <div style={{ position: 'relative' }}>
+                        <Form.Control type={showPass ? "text" : "password"} name='password' placeholder="Password" required/>
                         <span className="p-viewer">
                             <FaRegEye onClick={() => setShowPass(!showPass)} style={{ zIndex: '9999', position: 'absolute', top: '30%', right: '10px' }} />
                         </span>
@@ -72,7 +74,7 @@ const Register = () => {
                 </Button><br />
                 Already Have an account? <Link to="/login">Please Login</Link>
             </Form>
-                
+
             <span className='text-danger'>{error}</span>
             <span className='text-success'>{success}</span>
         </Container>

@@ -1,12 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
+import { FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
-    const {signIn} = useContext(AuthContext)
+    const [error, setError] = useState('')
+    const [success, setSuccess] = useState('')
+    const {signIn, googleLogin} = useContext(AuthContext)
+    const navigate = useNavigate()
+    const location = useLocation()
+    let from = location.state?.from?.pathname || '/'
+    console.log(location);
 
     const handleLogin =(event)=>{
         event.preventDefault()
@@ -14,16 +21,25 @@ const Login = () => {
         const email = form.email.value 
         const password = form.password.value 
 
-        console.log(email, password);
+        setError('')
+        setSuccess('')
+        // console.log(email, password);
         signIn(email, password)
         .then(result =>{
             const loggedUser = result.user
             console.log(loggedUser);
+            setSuccess('login successfully')
+            navigate(from, {replace: true})
             form.reset()
         })
         .catch(error => {
-            console.log(error);
+            setError(error.message);
         })
+    }
+
+    const handleGoogleLogin = () =>{
+        googleLogin()
+        navigate(from, {replace: true})
     }
 
     return (
@@ -31,11 +47,11 @@ const Login = () => {
             <Form onSubmit={handleLogin}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" name='email' placeholder="Enter email" />
+                    <Form.Control type="email" name='email' placeholder="Enter email" required/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" name='password' placeholder="Password" />
+                    <Form.Control type="password" name='password' placeholder="Password"required />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     <Form.Check type="checkbox" label="Check me out" />
@@ -45,6 +61,9 @@ const Login = () => {
                 </Button><br />
                 Do Not Have An Account? <Link to='/register'>Please Register</Link>
             </Form>
+            <button onClick={handleGoogleLogin} className='btn btn-outline-info'><FaGoogle /> Login With Google</button><br />
+            <span className='text-danger'>{error}</span>
+            <span className='text-success'>{success}</span>
         </Container>
     );
 };
