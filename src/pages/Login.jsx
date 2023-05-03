@@ -63,7 +63,7 @@ const Login = () => {
                 <Button variant="primary" type="submit">
                     Login
                 </Button><br />
-                Do Not Have An Account? <Link to='/register'>Please Register</Link>
+                Don't  Have An Account? <Link to='/register'>Please Register</Link>
             </Form>
             <button onClick={handleGoogleLogin} className='btn btn-outline-info mt-3'><FaGoogle /> Login With Google</button><br />
             <button onClick={handleGithubLogin} className='btn btn-outline-info mt-2'><FaGithub /> Login With Github</button><br />
