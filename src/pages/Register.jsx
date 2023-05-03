@@ -16,12 +16,11 @@ const Register = () => {
     const handleRegister = (event) => {
         event.preventDefault()
 
-
         setError('')
         setSuccess('')
         const form = event.target
         const name = form.name.value
-        // const photo = form.photo.value 
+        const photo = form.photo.value 
         const email = form.email.value
         const password = form.password.value
 
@@ -33,7 +32,10 @@ const Register = () => {
         }
         createUser(email, password)
             .then(result => {
-                const createUser = result.user
+                const createUser = result.user.updateProfile({
+                    "displayName": name,
+                    "photoURL": photo
+                })
                 console.log(createUser);
                 setSuccess("Login Successfully")
                 form.reset()
@@ -49,10 +51,10 @@ const Register = () => {
                     <Form.Label>Name</Form.Label>
                     <Form.Control type="text" name='name' placeholder="Your Name" />
                 </Form.Group>
-                {/* <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Photo URL</Form.Label>
                     <Form.Control type="text" name='photo' placeholder="Photo URL" />
-                </Form.Group> */}
+                </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" name='email' placeholder="Enter email" required/>
