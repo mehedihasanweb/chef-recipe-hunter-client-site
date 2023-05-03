@@ -5,7 +5,7 @@ const ClientSay = () => {
 
     return (
         <section className='bg-dark mt-5 p-5 text-white'>
-            <Container>
+            {/* <Container>
                 <h2 className='text-center text-bold'>What Our Clients Say</h2>
                 <Row className='my-5' xs={1} md={2} lg={3}>
                     <Col>
@@ -24,7 +24,7 @@ const ClientSay = () => {
                         <h5>JobTitle: Business Owner</h5>
                     </Col>
                 </Row>
-            </Container>
+            </Container> */}
         </section>
     );
 };
