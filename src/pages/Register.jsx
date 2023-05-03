@@ -3,6 +3,7 @@ import { Button, Container, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 import { FaRegEye } from "react-icons/fa";
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
     const [showPass, setShowPass] = useState(false)
@@ -32,18 +33,29 @@ const Register = () => {
         }
         createUser(email, password)
             .then(result => {
-                const createUser = result.user.updateProfile({
-                    "displayName": name,
-                    "photoURL": photo
-                })
+                const createUser = result.user
                 console.log(createUser);
                 setSuccess("Login Successfully")
                 form.reset()
+                updateUserData(result.user, name,photo)
             })
             .catch(error => {
                 setError(error.message);
             })
     }
+
+    const updateUserData =(user, name, photo)=>{
+        updateProfile(user, {
+            displayName: name,
+            photoURL: photo
+        })
+        .then()
+        .catch(error=>{
+            console.log(error);
+        })
+    }
+
+
     return (
         <Container style={{ width: "400px", margin: "auto" }} className='mt-5'>
             <Form onSubmit={handleRegister}>
