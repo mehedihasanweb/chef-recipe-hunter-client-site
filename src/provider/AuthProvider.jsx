@@ -33,7 +33,7 @@ const AuthProvider = ({children}) => {
     }
     const githubLogin =()=>{
         setLoader(true)
-        return signInWithPopup(auth, googleProvider)
+        return signInWithPopup(auth, githubProvider)
     }
 
     useEffect(()=>{

@@ -1,10 +1,6 @@
-import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
 
-
-
 const Blog = () => {
-    
     return (
         <Container className='my-5'>
             <div className='my-4 border border-success-subtle border-3 rounded-5 p-4'>

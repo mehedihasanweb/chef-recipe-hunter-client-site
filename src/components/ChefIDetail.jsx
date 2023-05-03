@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card, Col, Container, Image, Row } from 'react-bootstrap';
-import { useLoaderData, useParams } from 'react-router-dom';
+import { Container, Image, Row } from 'react-bootstrap';
+import { useLoaderData } from 'react-router-dom';
 import RecipeCard from './RecipeCard';
 
 const ChefIDetail = () => {

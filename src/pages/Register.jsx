@@ -10,7 +10,6 @@ const Register = () => {
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
 
-
     const { createUser } = useContext(AuthContext)
     // console.log(createUser);
 
