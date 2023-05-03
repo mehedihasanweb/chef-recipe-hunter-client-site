@@ -3,6 +3,8 @@ import { Container } from 'react-bootstrap';
 import bannerImg from '../assets/bannerImg.jpg'
 import './Main.css'
 import Chef from './Chef';
+import ClientSay from '../components/ClientSay';
+import Question from '../components/Question';
 const Main = () => {
     return (
         // <Container className='image'>
@@ -24,6 +26,8 @@ const Main = () => {
                 </div>
             </section>
             <Chef />
+            <ClientSay />
+            <Question />
         </div>
     );
 };

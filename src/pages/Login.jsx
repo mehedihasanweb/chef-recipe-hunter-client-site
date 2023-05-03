@@ -4,12 +4,12 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
-import { FaGoogle } from 'react-icons/fa';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
-    const {signIn, googleLogin} = useContext(AuthContext)
+    const {signIn, googleLogin, githubLogin} = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
     let from = location.state?.from?.pathname || '/'
@@ -41,6 +41,10 @@ const Login = () => {
         googleLogin()
         navigate(from, {replace: true})
     }
+    const handleGithubLogin =()=>{
+        githubLogin()
+        navigate(from, {replace: true})
+    }
 
     return (
         <Container style={{ width: "400px", margin: "auto" }} className='mt-5'>
@@ -61,7 +65,8 @@ const Login = () => {
                 </Button><br />
                 Do Not Have An Account? <Link to='/register'>Please Register</Link>
             </Form>
-            <button onClick={handleGoogleLogin} className='btn btn-outline-info'><FaGoogle /> Login With Google</button><br />
+            <button onClick={handleGoogleLogin} className='btn btn-outline-info mt-3'><FaGoogle /> Login With Google</button><br />
+            <button onClick={handleGithubLogin} className='btn btn-outline-info mt-2'><FaGithub /> Login With Github</button><br />
             <span className='text-danger'>{error}</span>
             <span className='text-success'>{success}</span>
         </Container>

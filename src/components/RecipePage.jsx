@@ -9,7 +9,7 @@ import './RecipePage.css'
 
 const RecipePage = () => {
     return (
-        <div className='layout'>
+        <div>
             <Header />
             <Outlet/>
         </div>
