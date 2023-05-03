@@ -8,8 +8,8 @@ import "./Header.css"
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
-    console.log(user);
-    const {displayName, photoURL} = user
+    // console.log(user);
+    // const {displayName, photoURL} = user
     const handleLogOut =()=>{
         logOut()
         .then()
@@ -31,7 +31,7 @@ const Header = () => {
                     </Nav>
                     <Nav>
                         {user ? <div>
-                            <Image style={{height: "50px",width: "50px", marginRight: "10px"}} src={photoURL} roundedCircle data-toggle="tooltip" data-placement="top" title={displayName}></Image>
+                            <Image style={{height: "50px",width: "50px", marginRight: "10px"}} src={user?.photoURL} roundedCircle data-toggle="tooltip" data-placement="top" title={user?.displayName}></Image>
                         <Link to='/login'><Button onClick={handleLogOut} variant="outline-warning">Log Out</Button></Link>
                         </div>: <Link to='/login'><Button variant="outline-warning">Log In</Button></Link>}
                     </Nav>
