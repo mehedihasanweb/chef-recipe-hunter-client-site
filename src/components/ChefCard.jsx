@@ -1,15 +1,16 @@
 import React from 'react';
-// import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
-// import Col from 'react-bootstrap/Col';
-// import Row from 'react-bootstrap/Row';
 import { Link } from 'react-router-dom';
+import LazyLoad from 'react-lazy-load';
 
 const ChefCard = ({ data }) => {
   const { id, experience, image_url, likes, name, total_recipes } = data
   return (
     <Card className=''>
-      <Card.Img style={{ height: '250px' }} loading="lazy" src={image_url} />
+      <LazyLoad>
+      <Card.Img style={{ height: '250px' }}  src={image_url} />
+      </LazyLoad>
+      
       <Card.Body>
         <Card.Title>Name: {name}</Card.Title>
         <Card.Text>Experience: {experience}</Card.Text>
