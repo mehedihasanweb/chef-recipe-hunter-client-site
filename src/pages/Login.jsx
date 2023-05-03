@@ -13,7 +13,6 @@ const Login = () => {
     const navigate = useNavigate()
     const location = useLocation()
     let from = location.state?.from?.pathname || '/'
-    // console.log(location);
 
     const handleLogin =(event)=>{
         event.preventDefault()
@@ -23,7 +22,7 @@ const Login = () => {
 
         setError('')
         setSuccess('')
-        // console.log(email, password);
+        
         signIn(email, password)
         .then(result =>{
             const loggedUser = result.user

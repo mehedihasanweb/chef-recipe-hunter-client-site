@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Button, Container, Image, Nav, Navbar } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
-// import { FaUserCircle } from 'react-icons/fa';
 import { AuthContext } from '../provider/AuthProvider';
 import "./Header.css"
 

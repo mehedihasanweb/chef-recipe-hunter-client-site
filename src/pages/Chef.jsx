@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
-// import { useLoaderData } from 'react-router-dom';
 import ChefCard from '../components/ChefCard';
 
 const Chef = () => {

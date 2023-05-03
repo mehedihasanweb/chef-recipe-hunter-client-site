@@ -11,7 +11,6 @@ const Register = () => {
     const [success, setSuccess] = useState('')
 
     const { createUser } = useContext(AuthContext)
-    // console.log(createUser);
 
     const handleRegister = (event) => {
         event.preventDefault()
@@ -24,7 +23,6 @@ const Register = () => {
         const email = form.email.value
         const password = form.password.value
 
-        // console.log(name, email, password);
         // validation 
         if (!/^.{6,}$/.test(password)) {
             setError("Please add at least 6 characters")

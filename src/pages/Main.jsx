@@ -1,10 +1,9 @@
 import React from 'react';
-// import { Container } from 'react-bootstrap';
-// import bannerImg from '../assets/bannerImg.jpg'
 import './Main.css'
 import Chef from './Chef';
 import ClientSay from '../components/ClientSay';
 import Question from '../components/Question';
+
 const Main = () => {
     return (
         <div>
