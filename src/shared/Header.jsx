@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { Button, Container, Image, Nav, Navbar } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
 import { AuthContext } from '../provider/AuthProvider';
@@ -9,6 +9,7 @@ import "./Header.css"
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
     console.log(user);
+    const {displayName, photoURL} = user
     const handleLogOut =()=>{
         logOut()
         .then()
@@ -30,7 +31,7 @@ const Header = () => {
                     </Nav>
                     <Nav>
                         {user ? <div>
-                            <FaUserCircle style={{ fontSize: '40px' }} />
+                            <Image style={{height: "50px",width: "50px", marginRight: "10px"}} src={photoURL} roundedCircle data-toggle="tooltip" data-placement="top" title={displayName}></Image>
                         <Link to='/login'><Button onClick={handleLogOut} variant="outline-warning">Log Out</Button></Link>
                         </div>: <Link to='/login'><Button variant="outline-warning">Log In</Button></Link>}
                     </Nav>
