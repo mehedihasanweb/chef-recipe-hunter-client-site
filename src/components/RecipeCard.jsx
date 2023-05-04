@@ -2,19 +2,22 @@ import React, { useState } from 'react';
 import { Card } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { addToLs } from '../App';
 
 const RecipeCard = ({recipe}) => {
     // console.log(recipe);
     const [isFavorite, setIsFavorite] = useState(false)
+
+    const {name,image,id, rating,cooking_method,ingredients} = recipe
     
     const handleFavorite =() =>{
         if(!isFavorite){
+            addToLs(id)
             setIsFavorite(true)
             toast("Your Favorite Recipe Added")
         }
     }
 
-    const {name,image, rating,cooking_method,ingredients} = recipe
     return (
         <Card className=''>
             <Card.Img style={{height: '200px'}} src={image} />

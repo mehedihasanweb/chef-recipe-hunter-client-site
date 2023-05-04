@@ -8,8 +8,8 @@ const Footer = () => {
                 <Row>
                     <Col md={4}>
                         <h3>Gusto</h3>
-                        <p>123 Main St<br />Anytown, USA 12345</p>
-                        <p>Phone: 555-555-5555<br />Email: info@gusto.com</p>
+                        <p>123 Main St<br />Anytown, Bangladesh</p>
+                        <p>Phone: 01534134134<br />Email: info@gusto.com</p>
                     </Col>
                     <Col md={4}>
                         <h3>Hours</h3>
