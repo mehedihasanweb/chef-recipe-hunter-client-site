@@ -9,6 +9,7 @@ const Register = () => {
     const [showPass, setShowPass] = useState(false)
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
+    const [accept, setAccept] = useState(false)
 
     const { createUser } = useContext(AuthContext)
 
@@ -55,6 +56,7 @@ const Register = () => {
 
     return (
         <Container style={{ width: "400px", margin: "auto" }} className='mt-5'>
+            <h2 className='text-center mb-5 text-bold fs-1'>Please Register</h2>
             <Form onSubmit={handleRegister}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Name</Form.Label>
@@ -78,9 +80,11 @@ const Register = () => {
                     </div>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
+                    <Form.Check onClick={(event)=>{
+                        setAccept(event.target.checked)
+                    }} type="checkbox" name='check' label='Accept terms and condition' />
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button variant="primary" disabled={!accept} type="submit">
                     Register
                 </Button><br />
                 Already Have an account? <Link to="/login">Please Login</Link>

@@ -47,6 +47,7 @@ const Login = () => {
 
     return (
         <Container style={{ width: "400px", margin: "auto" }} className='mt-5'>
+            <h2 className='text-center mb-5 fs-1 text-bold'>Please Login</h2>
             <Form onSubmit={handleLogin}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
